@@ -67,34 +67,6 @@ namespace DWS
             new Thread(AnimateBackground).Start(); // animate border (new thread)
             //new Thread(AutoUpdate).Start(); // auto update
         }
-        /*
-        void AutoUpdate()
-        {
-            try
-            {
-                var assemblyInfo =
-                        new WebClient().DownloadString(
-                    $"http://raw.githubusercontent.com/Nummer/Destroy-Windows-10-Spying/master/DWS/Properties/AssemblyInfo.cs?rnd={new Random().Next(0, 9999999)}");
-                var readText = assemblyInfo.Split('\n');
-                var versionInfoLines = readText.Where(t => t.Contains("[assembly: AssemblyFileVersion"));
-                var version = "";
-                foreach (var item in versionInfoLines)
-                {
-                    version = item.Substring(item.IndexOf('(') + 2, item.LastIndexOf(')') - item.IndexOf('(') - 3);
-                }
-                if (version == FileVersionInfo
-                        .GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location)
-                        .FileVersion) return;
-                Invoke(new MethodInvoker(() => { Enabled = false; }));
-                MessageBox.Show(string.Format(Resources.MainDwsForm_AutoUpdate1_, version), @"Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Process.Start("https://github.com/Nummer/Destroy-Windows-10-Spying/releases/latest");
-                Process.GetCurrentProcess().Kill();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(string.Format(Resources.MainDwsForm_AutoUpdate_, ex.Message), @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }*/
 
         public override string Text
         {
